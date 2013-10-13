@@ -1,0 +1,83 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ :href=>root_path } Главная
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to @post.title,@post
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to "Изменить",edit_post_path(@post),class: "active"
+
+.form-horizontal
+	.well
+		%h4 Внимание
+		%ul
+			%li
+				Текст новости может содержать HTML-код.
+			%li
+				Используйте тег 
+				%b
+					&lt;cut&gt;
+				, чтобы отделить часть новости, не отображаемую в списке новостей.
+			%li
+				Рекомендуется использовать заголовки не более 
+				%b &lt;h3&gt;&lt;/h3&gt;
+				, чтобы не нарушать правила
+				%strike фэн-шуя
+				типографики.
+
+	= form_for @post, :html=>{multipart: true} do |f|
+
+		%legend Создание новости
+
+		.control-group
+			= f.label :title, 'Заголовок',:class=>"control-label"
+			.controls
+				= f.text_field	:title, :class=>"span12"
+				- if @post.errors[:title]
+					%span.text-error= @post.errors[:title][0]
+
+		.control-group
+			= f.label :photo, 'Фотография', :class=>"control-label"
+			.controls
+				= f.file_field	:photo
+				- if @post.errors[:photo]
+					%span.text-error= @post.errors[:photo][0]
+
+		.control-group
+			= f.label :text, 'Текст', :class=>"control-label"
+			.controls
+				= f.text_area :text, :rows=>20, :class=>"btn-block"
+				- if @post.errors[:text]
+					%span.text-error= @post.errors[:text][0]
+
+
+
+		.control-group
+			= f.label :photos, "Прикрепить фотографии"
+			.controls
+				%input#photos{ :type=>"file", :name=>"photos[]", :multiple=>"true" }
+				
+		.control-group
+			.controls
+				= f.submit 'Сохранить', :class=>'btn btn-inverse'
+
+.row-fluid
+	.span10.offset2
+		%legend Прикрепленные фотографии
+		- @post.attachments.each do |att|
+			.row-fluid
+				.span3= image_tag att.photo.thumb.url
+				.span9 
+					%a{:href=>post_attachment_path(@post,att),"data-confirm"=>"Вы уверны, что хотите удалить изображение?","data-method"=>"delete", :rel=>"nofollow"}
+						%i.icon-remove.tt{:id=> att.id,"data-toggle"=>"tooltip","title"=>"Удалить"}
+			%br

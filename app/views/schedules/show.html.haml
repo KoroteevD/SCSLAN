@@ -1,0 +1,21 @@
+%div#page{ :style=>"display:none" }show_schedule
+
+
+.page-header
+	%h2
+		Расписание занятий
+		%small= @schedule.name
+		%a.btn.btn-danger#edit-schedule Редактировать
+
+.span8.offset2.alert.alert-success{ :style=>"display:none" }
+	%a.close#close{"data-dissmiss"=>"alert" } &times;
+	%h4 Успешно сохранено
+	= "Расписание #{@schedule.name} было изменено."
+
+%br
+
+= @schedule.body.html_safe
+
+%script{ :language => :javascript}
+	= "var sheduleID = #{@schedule.id};"
+

@@ -1,0 +1,15 @@
+.page-header
+	%h2
+		Расписание занятий
+		%small= @subtitle
+		- if current_user
+			= link_to 'Добавить расписание', new_schedule_path, class: "btn btn-danger"
+
+%ul
+	- @schedules.each do |schedule|
+		%li
+			= link_to schedule.name, schedule
+			- if current_user
+				%span.text-error
+					= link_to schedule, class: "text-error", method: :delete, data: {confirm: "Вы уверены, что ходите удалить?"} do
+						%i.icon-remove

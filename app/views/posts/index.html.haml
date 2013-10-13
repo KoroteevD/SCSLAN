@@ -1,0 +1,50 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a.active{ :href=>root_path } Новости
+
+
+.page-header
+	%h2
+		Новости
+		%small сайта, кафедры и университета
+		- if current_user
+			%a.btn.btn-danger{ :href=>new_post_path } Опубликовать новую
+
+- @posts.each do |post|
+	.row-fluid
+		.span12
+			.row-fluid
+				.span3
+					- if post.photo.url
+						= image_tag post.photo.thumb.url
+				.span9
+					.breadcrumb
+						%h4= link_to post.title, post
+					= simple_format(post.text.split('<cut>')[0])
+					-2.times.each do
+						%br
+					.breadcrumb
+						[
+						= link_to "Читать полностью", post
+						]
+						.pull-right
+							= post.created_at.strftime "Опубликована %d.%m.%Y в %H:%M:%S"
+	%br
+	%hr
+	%br
+.pagination.text-right
+	%ul
+		- @pages = 1 if @pages == 0
+		- lclickable = @page>0
+		%li{ :class=> lclickable ? "" : "disabled"}
+			%a{ :href=> lclickable ? "/posts/?page=#{@page}" : "#" } &laquo;
+		- @pages.times.each do |page|
+			%li{ :class=> (page==@page) ? "active" : "" }
+				%a{ :href=>"/posts/?page=#{page+1}" }= page+1
+		- rclickable = @page+1<@pages
+		%li{ :class=> rclickable ? "" : "disabled"}
+			%a{ :href=> rclickable ? "/posts/?page=#{@page+2}" : "#" } &raquo;
+

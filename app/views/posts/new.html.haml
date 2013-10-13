@@ -1,0 +1,66 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ :href=>root_path } Новости
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to "Опубликовать новую",new_post_path, class: "active"
+
+.form-horizontal
+	.well
+		%h4 Внимание
+		%ul
+			%li
+				Текст новости может содержать HTML-код.
+			%li
+				Используйте тег 
+				%b
+					&lt;cut&gt;
+				, чтобы отделить часть новости, не отображаемую в списке новостей.
+			%li
+				Рекомендуется использовать заголовки не более 
+				%b &lt;h3&gt;&lt;/h3&gt;
+				, чтобы не нарушать правила
+				%strike фэн-шуя
+				типографики.
+
+	= form_for @post, :html=>{multipart: true} do |f|
+
+		%legend Создание новости
+
+		.control-group
+			= f.label :title, 'Заголовок',:class=>"control-label"
+			.controls
+				= f.text_field	:title, class: "span12"
+				- if @post.errors[:title]
+					%span.text-error= @post.errors[:title][0]
+
+		.control-group
+			= f.label :photo, 'Фотография', :class=>"control-label"
+			.controls
+				= f.file_field	:photo
+				- if @post.errors[:photo]
+					%span.text-error= @post.errors[:photo][0]
+
+		.control-group
+			= f.label :text, 'Текст', :class=>"control-label"
+			.controls
+				= f.text_area :text, :rows=>20, :class=>"btn-block"
+				- if @post.errors[:text]
+					%span.text-error= @post.errors[:text][0]
+
+
+
+		.control-group
+			= f.label :photos, "Прикрепить фотографии"
+			.controls
+				%input#photos{ :type=>"file", :name=>"photos[]", :multiple=>"true" }
+				
+		.control-group
+			.controls
+				= f.submit 'Создать', :class=>'btn btn-inverse'

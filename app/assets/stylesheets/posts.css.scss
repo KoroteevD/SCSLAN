@@ -1,0 +1,94 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$brandHeight: 400px;
+
+.container-fluid {
+	padding: 0;
+	margin: 0;
+
+}
+#content{
+	min-height: 150px;
+}
+.header {
+	margin-top: 40px;
+	background: url(/bg.png);
+	background-color: #72c6df;
+	/*background-repeat: no-repeat;*/
+	min-height: $brandHeight;
+	/*height: $brandHeight;*/
+	margin-left: 0px;
+
+	.brand {
+		min-height: $brandHeight / 2 - 30;
+		padding-top: $brandHeight / 2 - 70;
+		padding-left: 170px;
+		text-shadow: 1px 1px  1px black, 0 0 1em black;
+		color: #fff;
+
+		.page-header{
+			border: none !important;
+
+			h1{
+				small{
+					color: #fff !important;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+	.logo {
+		margin-top: $brandHeight / 5;
+	}
+}
+
+.footer {
+	opacity: 0.95;
+	min-height: $brandHeight / 2;
+	background-color: #333;
+	color: #fff;
+	padding-top: 30px;;
+	background: url(/bg2.png);
+
+	a {
+		color: #fff;
+
+		&:hover{
+			color: #ddd;
+			text-decoration: none;
+		}
+	}
+}
+
+.span12.navbar {
+	margin-top: 30px;
+	text-align: center;
+	.dropdown {
+		display: inline-block;
+		text-align: left;
+
+	}
+}
+
+.nav-divider {
+	width: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border-left: 1px solid #000;
+	display: inline;
+	height: 100%;
+}
+
+.icon-remove {
+	cursor: pointer;
+}
+
+a{
+	color: #000;
+	&:hover {
+		color: #000;
+	}
+}

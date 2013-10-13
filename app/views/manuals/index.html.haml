@@ -1,0 +1,10 @@
+%h2
+	Методические указания
+	%small= @subject.title
+	= link_to 'Добавить', new_subject_manual_path(params[:subject_id]),class: "btn btn-danger"
+
+
+%ul
+	- @manuals.each do |manual|
+		%li= link_to manual.name, manual.file.url
+

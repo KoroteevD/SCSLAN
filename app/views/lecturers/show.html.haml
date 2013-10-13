@@ -1,0 +1,36 @@
+.page-header
+	%h1
+		Преподаватели
+		%small= @lecturer.name
+.row-fluid
+	.span4
+		=image_tag @lecturer.photo.url
+
+	.span8
+		%p
+			%b= @lecturer.name
+
+		%p
+			%b= @lecturer.position
+
+		%p
+			%b= @lecturer.degree
+
+		%p
+			%b Научные направления:
+			= @lecturer.direction
+		%p
+			Дисциплины:
+			-if @lecturer.subjects.count.zero?
+				нет.
+			%ul
+				- @lecturer.subjects.each do |subject|
+					%li= link_to subject.title, subject
+
+		- if current_user
+			%p
+				=link_to "Изменить",edit_lecturer_path(@lecturer)
+				|
+				=link_to "Удалить",lecturer_path(@lecturer),method:"delete",confirm:"Вы уверены?"
+%br
+%br

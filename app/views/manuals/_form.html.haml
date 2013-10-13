@@ -1,0 +1,17 @@
+.form-horizontal
+	= form_for [Subject.find(params[:subject_id]), @manual] do |f|
+		.control-group
+			= f.label :name,"Название"
+			.controls
+				= f.text_field :name
+		.control-group
+			= f.label :name_ukr, "Название на украинском"
+			.controls
+				= f.text_field :name_ukr
+		.control-group
+			= f.label :file
+			.controls
+				= f.file_field :file
+		.form-actions
+			= f.submit 'Сохранить', class: "btn btn-info"
+			= link_to 'Назад', subject_manuals_path(params[:subject_id]), class: "btn"

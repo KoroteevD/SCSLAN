@@ -1,0 +1,173 @@
+﻿!!! 5
+%html
+	%head
+		%title
+			Кафедра СКС 
+			- if @title
+				| 
+			= @title
+		= stylesheet_link_tag    "application", :media => "all"
+		= javascript_include_tag "application"
+		= csrf_meta_tags
+
+	%body
+		.container-fluid
+			.row-fluid
+				.span12.header
+					.row-fluid
+						.span8
+							.brand
+								.page-header
+									%h1
+										КАФЕДРА СКС
+										%br
+										%small Специализированные компьютерные системы 
+
+
+			.row-fluid
+				.span12.navbar
+
+					%a{ :href=> root_path } Новости
+
+					.nav-divider
+
+					.dropdown
+						%a{ "data-toggle"=>"dropdown", :href=>"#"} О Кафедре
+						%ul.dropdown-menu{ :role=>"menu", "aria-labelledby"=>"dLabel" }
+							%li
+								%a{ :href=>aboutdepartment_materials_path } Информация
+							%li
+								%a{ :href=>aboutProfession_materials_path } Особенности профессии
+							%li
+								%a{ :href=>lecturers_path } Преподаватели
+							%li
+								%a{ :href=> contacts_materials_path }Контакты
+
+					.nav-divider
+
+					.dropdown
+						%a{ "data-toggle"=>"dropdown", :href=>"#" } Студентам
+						%ul.dropdown-menu{ :role=>"menu", "aria-labelledby"=>"dLabel"}
+							%li
+								%a{ :href=>distanceLearning_materials_path } Дистанционное обучение
+							%li
+								%a{ :href=>list_subjects_path } Методические указания
+							%li
+								%a{ :href=>"#{schedules_path}?type=2" } Расписание преподавателей 
+							%li
+								%a{ :href=>"#{schedules_path}?type=1" } Расписание студентов 
+
+
+					.nav-divider
+
+					.dropdown
+						%a{ "data-toggle"=>"dropdown", :href=>"#" } Научная деятельность
+						%ul.dropdown-menu{ :role=>"menu", "aria-labelledby"=>"dLabel"}
+							%li
+								%a{ :href=> scientific_materials_path } Основные направления
+							%li
+								%a{ :href=> olympics_materials_path } Конференции и олимпиады
+
+					.nav-divider
+
+					.dropdown
+						%a{ "data-toggle"=>"dropdown", :href=>"#" } Абитуриенту
+						%ul.dropdown-menu{ :role=>"menu", "aria-labelledby"=>"dLabel" }
+							%li
+								%a{ :href=> subjects_path } Изучаемые предметы
+							%li
+								%a{ :href=> dormitories_materials_path } Общежития
+							%li
+								%a{ :href=> map_materials_path } Карта ДонГТУ
+							%li
+								%a{ :href=> documents_materials_path } Документы
+
+
+					.nav-divider
+
+					.dropdown
+						%a{ "data-toggle"=>"dropdown", :href=>"#" } Студенческая жизнь
+						%ul.dropdown-menu{ :role=>"menu", "aria-labelledby"=>"dLabel" }
+							%li
+								%a{ :href=> groups_materials_path } Художественные коллективы
+							%li
+								%a{ :href=> rest_materials_path } Отдых студентов
+							%li
+								%a{ :href=> links_materials_path } Ссылки
+
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!                                !!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!	Шаблон будет вставлен сюда	!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!                                !!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			.row-fluid
+				.span10.offset1#content
+					= yield 
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			= #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+			.row-fluid.footer
+				.span12
+					.row-fluid
+						%ul.span1.offset1
+							%b
+								%a{ :href=> root_path } Новости
+
+
+
+						%ul.span2
+							%b О Кафедре
+							%li
+								%a{ :href=>aboutdepartment_materials_path } Информация
+							%li
+								%a{ :href=>aboutProfession_materials_path } Особенности профессии
+							%li
+								%a{ :href=>lecturers_path } Преподаватели
+							%li
+								%a{ :href=> contacts_materials_path }Контакты
+						%ul.span2
+							%b Студентам
+							%li
+								%a{ :href=>distanceLearning_materials_path } Дистанционное обучение
+							%li
+								%a{ :href=>subjects_path } Методические указания
+							%li
+								%a{ :href=>"#{schedules_path}?type=2" } Расписание преподавателей 
+							%li
+								%a{ :href=>"#{schedules_path}?type=1" } Расписание студентов 
+						%ul.span2
+							%b Научная деятельность
+							%li
+								%a{ :href=> scientific_materials_path } Основные направления
+							%li
+								%a{ :href=> olympics_materials_path } Конференции и олимпиады
+						%ul.span2
+							%b Абитуриенту
+							%li
+								%a{ :href=> subjects_path } Изучаемые предметы
+							%li
+								%a{ :href=> dormitories_materials_path } Общежития
+							%li
+								%a{ :href=> map_materials_path } Карта ДонГТУ
+							%li
+								%a{ :href=> documents_materials_path } Документы
+
+						%ul.span2
+							%b Студенческая жизнь
+							%li
+								%a{ :href=> groups_materials_path } Художественные коллективы
+							%li
+								%a{ :href=> rest_materials_path } Отдых студентов
+							%li
+								%a{ :href=> links_materials_path } Ссылки
+
+					.row-fluid
+						.span11.text-right
+							%h4
+								%a{ :href=> root_path }
+									&copy Специализированные компьютерные системы 
+									= Time.now.year
+

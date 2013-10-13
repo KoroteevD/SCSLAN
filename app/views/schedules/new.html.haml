@@ -1,0 +1,54 @@
+%h2 Создание расписания
+
+%div#page{ :style=>"display:none" }new_schedule
+
+.form
+	= form_for @schedule do |f|
+		- if @schedule.errors.any?
+			#error_explanation
+				%h2= "#{pluralize(@schedule.errors.count, "error")} prohibited this schedule from being saved:"
+				%ul
+					- @schedule.errors.full_messages.each do |msg|
+						%li= msg
+		.control-group
+			= f.label :sch_type, "Тип"
+			= f.select :sch_type, [["Расписание группы","1"],["Расписание преподавателя","2"]]
+		.control-group
+			= f.label :name, "Группа или имя преподавателя"
+			= f.text_field :name
+		.control-group
+			= f.label :body, "Расписание"
+			= f.hidden_field :body
+
+
+			- div_sub = '<div contenteditable="true" class="subject"></div>'
+			- div_lec = '<div contenteditable="true" class="lecturer"></div>'
+			- div_aud = '<div contenteditable="true" class="auditory"></div>'
+			- divs = "#{div_sub}#{div_lec}#{div_aud}".html_safe
+
+			%table.table.table-bordered.table-striped.shcedule
+				%tr
+					%th День недели
+					%th Время
+					%th Числитель числителя
+					%th Знаменатель числителя
+					%th Числитель знаменателя
+					%th Знаменатель знаменателя
+				- ["Понедельник","Вторник","Среда","Четверг","Суббота","Воскресенье"].each do |day|
+					%tr
+						%th{ :rowspan=>"7"}= day
+						%th 8:00
+						%td= divs
+						%td= divs
+						%td= divs
+						%td= divs
+
+						- ["9:40","11:20","13:00","14:40","16:20","18:00"].each do |time|
+							%tr
+								%th= time
+								%td= divs
+								%td= divs
+								%td= divs
+								%td= divs
+		.form-actions
+			%a.btn.btn-inverse#add_schedule Добавить

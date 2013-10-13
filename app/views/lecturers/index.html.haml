@@ -1,0 +1,21 @@
+.page-header
+    %h2
+        Преподаватели
+        %small Список преподавателей кафедры СКС
+        - if current_user
+            = link_to 'Новый преподаватель', new_lecturer_path,class: "btn btn-danger"
+
+
+- @lecturers.each do |lecturer|
+    .row-fluid
+        .span3= image_tag lecturer.photo.thumb.url
+        .span9
+            %h4= lecturer.name
+            %p= lecturer.position
+            %p= lecturer.degree
+            %p= link_to "Подробней", lecturer
+    %hr
+    
+%br
+
+

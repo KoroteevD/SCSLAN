@@ -1,0 +1,37 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ :href=>root_path } Главная
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to @post.title,@post,class: "active"
+
+.page-header
+	%h2
+		= @post.title
+		%small= Time.now.strftime "опубликована %d.%m.%Y в %H:%M:%S"
+
+- if @post.photo.url
+	.text-center= image_tag @post.photo.url,style:"float:left;margin-right:10px;margin-top:10px;"
+
+= simple_format(@post.text)
+
+- @post.attachments.each do |att|
+	.text-center= image_tag att.photo.url
+	%br
+
+- if current_user
+	.span12.navbar
+		= link_to "Изменить", edit_post_path(@post)
+		.nav-divider
+		= link_to "Удалить", post_path(@post), method: "delete", confirm: "Вы уверены, что ходите удалить?"
+- else
+	%br
+	%br
+
+

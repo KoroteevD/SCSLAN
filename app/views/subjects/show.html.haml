@@ -1,0 +1,25 @@
+.page-header
+	%h2
+		Предметы
+		%small= @subject.title
+
+	%p
+		%b Название:
+		= @subject.title
+
+	%p
+		%b Курс:
+		= @subject.course
+
+	%p
+		%b Преподаватель:
+		= @subject.lecturer.name
+
+
+	= simple_format(@subject.description)
+
+	- if current_user
+		%p
+			=link_to "Изменить",edit_subject_path(@subject)
+			|
+			=link_to "Удалить",subject_path(@subject),method:"delete",confirm:"Вы уверены?"

@@ -1,0 +1,21 @@
+= form_for @subject, class: "form-horizintal" do |f|
+	.well
+		.control-group
+			= f.label	:title, "Название"
+			.controls
+				= f.text_field		:title, class: "span5"
+		.control-group
+			= f.label	:description, "Описание"
+			.controls
+				= f.text_area :description, rows:10, class: "span5"
+		.control-group
+			= f.label	:lecturer_id, "Преподаватель"
+			.controls
+				= f.select :lecturer_id, Lecturer.all.collect {|p| [ p.name, p.id ] }
+		.control-group
+			= f.label	:course
+			.controls
+				= f.number_field :course, min: 1, max:5, value:1
+
+		.form-actions
+			= f.submit "Сохранить", class: "btn btn-inverse"

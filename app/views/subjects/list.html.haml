@@ -1,0 +1,15 @@
+.page-header
+%h1
+	Предметы
+	%small Список предметов
+
+.row-fluid
+	.span12
+		%br
+
+		%ol
+			- @subjects.each do |subject|
+				%li= link_to subject.title, subject_manuals_path(subject.id)
+
+		%br
+

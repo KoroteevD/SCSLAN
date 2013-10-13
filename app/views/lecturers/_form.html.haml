@@ -1,0 +1,26 @@
+= form_for @lecturer do |f|
+
+    .well
+        .control-group
+            = f.label :name, "ФИО"
+            .controls
+                = f.text_field :name, class: "span5"
+        .control-group
+            = f.label :position, "Должность"
+            .controls
+                = f.text_field :position, class: "span5"
+        .control-group
+            = f.label :degree, "Научная степень"
+            .controls
+                = f.text_field :degree, class: "span5"
+        .control-group
+            = f.label :direction, "Научные направления"
+            .controls
+                = f.text_field :direction, class: "span5"
+        .control-group
+            = f.label :photo, "Фотография"
+            .controls
+                = f.file_field :photo
+        .form-actions
+            = f.submit "Создать преподавателя", class: "btn btn-inverse"
+                
