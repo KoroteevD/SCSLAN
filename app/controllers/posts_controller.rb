@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   def index
     @page = 0    
     @page = params[:page].to_i-1 if params[:page]
-  	@posts = Post.where(1).order("id desc").limit(5).offset(@page*5)
+  	@posts = Post.where('1=1').order("id desc").limit(5).offset(@page*5)
     @count = Post.all.count
     @pages = (@count / 5.0).ceil
     puts @pages
