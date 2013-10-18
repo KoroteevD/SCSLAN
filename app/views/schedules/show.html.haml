@@ -1,3 +1,22 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		Студентам
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: schedules_path }
+			Расписание занятий
+			= @subtitle
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		%a.active{ href: schedule_path(@schedule.id) }= @schedule.name
+
 %div#page{ :style=>"display:none" }show_schedule
 
 

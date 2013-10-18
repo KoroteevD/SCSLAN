@@ -1,3 +1,17 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		Студентам
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a.active{ href: schedules_path }
+			Расписание занятий
+			= @subtitle
+
 .page-header
 	%h2
 		Расписание занятий

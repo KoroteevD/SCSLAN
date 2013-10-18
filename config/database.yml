@@ -19,7 +19,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql2
+  database: scs_lan
+  username: root
+  password: atlantida
+  host: localhost
+  encoding: utf8
   pool: 5
+  reconnect: false
   timeout: 5000

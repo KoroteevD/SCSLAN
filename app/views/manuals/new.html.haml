@@ -1,4 +1,28 @@
-%h1 Новый материал
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		Студентам
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: list_subjects_path }
+			Методические указания
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: subject_manuals_path(params[:subject_id]) }
+			= @subject.title
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a.active{ href: new_subject_manual_path(params[:subject_id]) } Новый материал
+
+%h2 Новый материал
 
 %legend Создание материала
 = render 'form'

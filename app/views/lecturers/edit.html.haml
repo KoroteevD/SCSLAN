@@ -1,3 +1,22 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: lecturers_path } Преподаватели
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to @lecturer.name, lecturer_path(@lecturer.id)
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to "Изменить", edit_lecturer_path(@lecturer.id), class: "active"
+
 %h2
 	Преподаватели
 	%small Редактирование преподавателя

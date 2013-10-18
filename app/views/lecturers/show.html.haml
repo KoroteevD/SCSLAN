@@ -1,7 +1,21 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: lecturers_path } Преподаватели
+	%li
+		&nbsp;
+		%i.icon-chevron-right
+		&nbsp;
+	%li
+		= link_to @lecturer.name, lecturer_path(@lecturer.id), class: "active"
+
 .page-header
 	%h1
 		Преподаватели
 		%small= @lecturer.name
+
 .row-fluid
 	.span4
 		=image_tag @lecturer.photo.url
@@ -29,8 +43,8 @@
 
 		- if current_user
 			%p
-				=link_to "Изменить",edit_lecturer_path(@lecturer)
+				=link_to "Изменить",edit_lecturer_path(@lecturer), class: "text-warning"
 				|
-				=link_to "Удалить",lecturer_path(@lecturer),method:"delete",confirm:"Вы уверены?"
+				=link_to "Удалить", lecturer_path(@lecturer), method:"delete", class: "text-error", data: {confirm:"Вы уверены?"}
 %br
 %br

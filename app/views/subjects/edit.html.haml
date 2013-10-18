@@ -1,3 +1,26 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		Абитуриенту
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: subjects_path }
+			Изучаемые предметы
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: subject_path(@subject.id) }= @subject.title
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a.active{ href: edit_subject_path(@subject.id) } Редактирование предмета
+
 .page-header
 	%h2
 		Предметы

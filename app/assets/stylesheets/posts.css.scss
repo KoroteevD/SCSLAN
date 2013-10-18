@@ -74,12 +74,12 @@ $brandHeight: 400px;
 }
 
 .nav-divider {
-	width: 0px;
-	margin-left: 10px;
-	margin-right: 10px;
-	border-left: 1px solid #000;
-	display: inline;
-	height: 100%;
+	width: 0px !important;
+	margin-left: 10px !important;
+	margin-right: 10px !important;
+	border-left: 1px solid #000 !important;
+	display: inline !important;
+	height: 100% !important;
 }
 
 .icon-remove {

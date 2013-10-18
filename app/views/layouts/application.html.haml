@@ -12,6 +12,11 @@
 
 	%body
 		.container-fluid
+			- if current_user
+				.row-fluid
+					.span11.text-right
+						= link_to "Выйти", destroy_user_session_path, method: :delete, data: {confirm: "Вы уверены?"}
+
 			.row-fluid
 				.span12.header
 					.row-fluid

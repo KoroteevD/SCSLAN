@@ -17,7 +17,7 @@
 	%li
 		= link_to "Изменить",edit_post_path(@post),class: "active"
 
-.form-horizontal
+.well
 	.well
 		%h4 Внимание
 		%ul
@@ -35,49 +35,28 @@
 				%strike фэн-шуя
 				типографики.
 
-	= form_for @post, :html=>{multipart: true} do |f|
-
+	= simple_form_for @post, :html=>{multipart: true, class: "well form-horizontal"} do |f|
 		%legend Создание новости
-
-		.control-group
-			= f.label :title, 'Заголовок',:class=>"control-label"
-			.controls
-				= f.text_field	:title, :class=>"span12"
-				- if @post.errors[:title]
-					%span.text-error= @post.errors[:title][0]
-
-		.control-group
-			= f.label :photo, 'Фотография', :class=>"control-label"
-			.controls
-				= f.file_field	:photo
-				- if @post.errors[:photo]
-					%span.text-error= @post.errors[:photo][0]
-
-		.control-group
-			= f.label :text, 'Текст', :class=>"control-label"
-			.controls
-				= f.text_area :text, :rows=>20, :class=>"btn-block"
-				- if @post.errors[:text]
-					%span.text-error= @post.errors[:text][0]
-
-
+		= f.input :title, label: 'Заголовок'
+		= f.input :photo, label: 'Фотография'
+		= f.input :text, label: 'Текст', input_html: {class: "btn-block", rows: 20}
 
 		.control-group
 			= f.label :photos, "Прикрепить фотографии"
 			.controls
 				%input#photos{ :type=>"file", :name=>"photos[]", :multiple=>"true" }
-				
-		.control-group
-			.controls
-				= f.submit 'Сохранить', :class=>'btn btn-inverse'
+		
+		.form-actions
+			= f.button :submit, 'Изменить', :class=>'btn btn-inverse'
 
-.row-fluid
-	.span10.offset2
-		%legend Прикрепленные фотографии
-		- @post.attachments.each do |att|
-			.row-fluid
-				.span3= image_tag att.photo.thumb.url
-				.span9 
-					%a{:href=>post_attachment_path(@post,att),"data-confirm"=>"Вы уверны, что хотите удалить изображение?","data-method"=>"delete", :rel=>"nofollow"}
-						%i.icon-remove.tt{:id=> att.id,"data-toggle"=>"tooltip","title"=>"Удалить"}
-			%br
+		.row-fluid
+			.span10.offset2
+				%legend Прикрепленные фотографии
+				- @post.attachments.each do |att|
+					.row-fluid
+						.span3
+							= image_tag att.photo.thumb.url
+						.span9 
+							%a{:href=>post_attachment_path(@post,att),"data-confirm"=>"Вы уверны, что хотите удалить изображение?","data-method"=>"delete", :rel=>"nofollow"}
+								%i.icon-remove.tt{:id=> att.id,"data-toggle"=>"tooltip","title"=>"Удалить"}
+					%br

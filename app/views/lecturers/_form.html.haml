@@ -1,26 +1,10 @@
-= form_for @lecturer do |f|
-
-    .well
-        .control-group
-            = f.label :name, "ФИО"
-            .controls
-                = f.text_field :name, class: "span5"
-        .control-group
-            = f.label :position, "Должность"
-            .controls
-                = f.text_field :position, class: "span5"
-        .control-group
-            = f.label :degree, "Научная степень"
-            .controls
-                = f.text_field :degree, class: "span5"
-        .control-group
-            = f.label :direction, "Научные направления"
-            .controls
-                = f.text_field :direction, class: "span5"
-        .control-group
-            = f.label :photo, "Фотография"
-            .controls
-                = f.file_field :photo
-        .form-actions
-            = f.submit "Создать преподавателя", class: "btn btn-inverse"
-                
+.well
+	= simple_form_for(@lecturer, html: {class: "form-horizontal"}) do |f|
+		= f.input :name, label: "ФИО"
+		= f.input :position, label: "Должность"
+		= f.input :degree, label: "Научная степень"
+		= f.input :direction, label: "Научные направления"
+		= f.input :photo, label: "Фотография"
+		.form-actions
+			= f.button :submit, "Создать преподавателя", class: "btn btn-inverse"
+				

@@ -1,10 +1,16 @@
+%ul.breadcrumb
+    %li
+        %i.icon-chevron-right
+        &nbsp;
+    %li.active 
+        %a.active{ href: lecturers_path } Преподаватели
+
 .page-header
     %h2
         Преподаватели
         %small Список преподавателей кафедры СКС
         - if current_user
             = link_to 'Новый преподаватель', new_lecturer_path,class: "btn btn-danger"
-
 
 - @lecturers.each do |lecturer|
     .row-fluid

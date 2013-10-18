@@ -1,3 +1,21 @@
+%ul.breadcrumb
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		Абитуриенту
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a{ href: subjects_path }
+			Изучаемые предметы
+	%li
+		%i.icon-chevron-right
+		&nbsp;
+	%li 
+		%a.active{ href: subject_path(@subject.id) }= @subject.title
+
 .page-header
 	%h2
 		Предметы
