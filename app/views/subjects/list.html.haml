@@ -12,17 +12,18 @@
 			Методические указания
 
 .page-header
-%h1
-	Предметы
+%h2
+	Методические указания
 	%small Список предметов
 
 .row-fluid
 	.span12
 		%br
-
-		%ol
-			- @subjects.each do |subject|
+		- ["Первый", "Второй", "Третий", "Четвертый", "Пятый"].each_with_index do |course, index|
+			%h3= "#{index+1}. #{course} курс"
+			%ol
+			- Subject.where(course: index+1).each do |subject|
 				%li= link_to subject.title, subject_manuals_path(subject.id)
-
+			%hr
 		%br
 

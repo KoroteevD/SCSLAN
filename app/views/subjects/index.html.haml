@@ -18,32 +18,9 @@
 	- if current_user
 		= link_to "Добавить новый", new_subject_path, class: "btn btn-danger"
 
-.well
-	%legend Первый курс
-	%ol
-		- Subject.where(course: 1).each do |subject|
-			%li= link_to subject.title,subject,class: ".tt",title: subject.description
-
-.well
-	%legend Второй курс
-	%ol
-		- Subject.where(course: 2).each do |subject|
-			%li= link_to subject.title,subject,class: ".tt",title: subject.description
-
-.well
-	%legend Третий курс
-	%ol
-		- Subject.where(course: 3).each do |subject|
-			%li= link_to subject.title,subject,class: ".tt",title: subject.description
-
-.well
-	%legend Четвертый курс
-	%ol
-		- Subject.where(course: 4).each do |subject|
-			%li= link_to subject.title,subject,class: ".tt",title: subject.description
-
-.well
-	%legend Пятый курс
-	%ol
-		- Subject.where(course: 5).each do |subject|
-			%li= link_to subject.title,subject,class: ".tt",title: subject.description
+- ["Первый", "Второй", "Третий", "Четвертый", "Пятый"].each_with_index do |course, index|
+	.well
+		%legend3= "#{index+1}. #{course} курс"
+		%ol
+			- Subject.where(course: index+1).each do |subject|
+				%li= link_to subject.title,subject,class: ".tt",title: subject.description
