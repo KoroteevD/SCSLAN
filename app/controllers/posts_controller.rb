@@ -11,7 +11,6 @@ class PostsController < ApplicationController
   #   экшенов show, edit, update, delete
   #
 	before_filter :find_post, :only=>[:show,:edit,:update,:destroy]
-  before_filter :authenticate_user!, :only=>[:new,:create,:edit,:update,:destroy]
 
 
   #

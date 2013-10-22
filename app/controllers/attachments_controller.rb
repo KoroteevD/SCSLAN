@@ -8,8 +8,8 @@ class AttachmentsController < ApplicationController
 		redirect_to edit_post_path (params[:post_id])
 	end
 
-	def find_attachment
-		@att = Attachment.where("post_id=? and id=?", params[:post_id], params[:id]).first
-	end
-
+	private
+		def find_attachment
+			@att = Attachment.where("post_id=? and id=?", params[:post_id], params[:id]).first
+		end
 end

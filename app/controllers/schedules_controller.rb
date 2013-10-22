@@ -1,8 +1,6 @@
 class SchedulesController < ApplicationController
 
-
   before_action :set_schedule, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :only=>[:new,:create,:update,:destroy]
 
   # GET /schedules
   def index

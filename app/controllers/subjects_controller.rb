@@ -5,7 +5,6 @@ class SubjectsController < ApplicationController
   before_filter :title_set
 
   before_filter :find_subject, only: [:show,:edit,:update,:destroy]
-  before_filter :authenticate_user!, :only=>[:new,:create,:edit,:update,:destroy]
 
   def index
   end

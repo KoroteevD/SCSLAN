@@ -20,7 +20,8 @@
 %h2
 	Методические указания
 	%small= @subject.title
-	= link_to 'Добавить', new_subject_manual_path(params[:subject_id]),class: "btn btn-danger"
+	- if current_user
+		= link_to 'Добавить', new_subject_manual_path(params[:subject_id]),class: "btn btn-danger"
 
 
 %ul
